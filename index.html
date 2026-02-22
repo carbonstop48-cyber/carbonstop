@@ -46,6 +46,22 @@
         .product-grid article span.image:hover img {
             transform: none !important;
         }
+
+        /* Floating WhatsApp button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+        }
+
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -134,12 +150,16 @@ Areas Served: Singapore & West Malaysia</p>
 
 </div>
 
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/6587808269" target="_blank" class="whatsapp-float">
+    <img src="images/WA.png" alt="Chat on WhatsApp" />
+</a>
+
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
 
 </body>
 </html>
-
 
 
 
