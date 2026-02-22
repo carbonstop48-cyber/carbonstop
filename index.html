@@ -8,183 +8,113 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* HEADER */
-        #header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center; /* vertical alignment */
-            padding: 10px 20px;
-            background: #f8f8f8;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Logo */
-        #header .logo {
-            display: flex;
-            align-items: center; /* vertical center */
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
-        }
-
-        #header .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        #header .logo span.logo-text {
-            line-height: 1.2;
-            font-size: 1.2rem;
-        }
-
-        /* Mobile logo: 2 lines */
-        @media screen and (max-width: 600px) {
-            #header .logo span.logo-text {
-                display: block;
-            }
-        }
-
-        /* Hamburger */
-        .hamburger-container {
-            position: relative;
-        }
-
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 22px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 4px;
-            background: #333;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-
-        .hamburger-dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 35px;
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            overflow: hidden;
-            min-width: 140px;
-            z-index: 10;
-        }
-
-        .hamburger-dropdown a {
-            display: block;
-            padding: 10px 15px;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .hamburger-dropdown a:hover {
-            background: #f0f0f0;
-        }
-
-        /* MAIN */
-        #main { padding: 20px; }
-
-        #intro { text-align: center; margin-bottom: 30px; }
-
-        /* PRODUCT GRID */
+        /* Product grid setup */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
-        @media screen and (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media screen and (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
+        @media screen and (max-width: 900px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
+        @media screen and (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Uniform image frame */
         .product-grid article span.image {
-            display:block;
-            width:100%;
-            height:250px;
-            overflow:hidden;
+            display: block;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
         }
 
         .product-grid article span.image img {
-            width:100%;
-            height:100%;
-            object-fit:contain;
-            display:block;
-            transition:none !important;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: none !important;
         }
 
-        .product-grid article span.image:hover img { transform:none !important; }
-
-        /* CONTACT */
-        #contact {
-            background:#f0f0f0;
-            padding:20px;
-            margin-top:40px;
-            border-radius:8px;
+        .product-grid article span.image:hover img {
+            transform: none !important;
         }
 
-        .contact-flex {
-            display:flex;
-            flex-wrap:wrap;
-            align-items:center;
-            justify-content:space-between;
-            gap:10px;
-            width:100%;
-        }
-
-        .contact-left { flex:1; min-width:120px; }
-        .contact-center { flex:2; min-width:200px; text-align:center; }
-        .contact-right { flex:1; min-width:150px; text-align:right; }
-
-        @media screen and (max-width: 600px) {
-            .contact-left, .contact-center, .contact-right { flex:100%; text-align:center !important; }
-            .contact-right { margin-top:10px; }
-        }
-
-        .button.primary {
-            background:#333;
-            color:white;
-            border:none;
-            padding:10px;
-            border-radius:5px;
-            cursor:pointer;
-            font-weight:bold;
-            text-decoration:none;
-        }
-
-        .button.primary:hover { background:#000; }
-
-        /* WhatsApp floating */
+        /* Floating WhatsApp button */
         .whatsapp-float {
             position: fixed;
-            bottom:20px;
-            right:20px;
-            width:60px;
-            height:60px;
-            z-index:1000;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
         }
 
-        .whatsapp-float img { width:100%; height:100%; object-fit:contain; }
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
+        /* Contact section styling */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .contact-left {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .contact-center {
+            flex: 2;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .contact-right {
+            flex: 1;
+            min-width: 150px;
+            text-align: right;
+        }
+
+        @media screen and (max-width: 600px) {
+            .contact-left, .contact-center, .contact-right {
+                flex: 100%;
+                text-align: center !important;
+            }
+            .contact-right {
+                margin-top: 10px;
+            }
+        }
+
+        /* Button styling */
+        .button.primary {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .button.primary:hover {
+            background: #000;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -192,87 +122,139 @@
 <div id="wrapper">
 
 <header id="header">
-    <!-- Logo -->
-    <a class="logo">
-        <img src="images/fav.png" alt="Logo" />
-        <span class="logo-text">Carbonstop<br>Pte. Ltd.</span>
-    </a>
-
-    <!-- Hamburger -->
-    <div class="hamburger-container">
-        <button class="hamburger" id="hamburgerBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="hamburger-dropdown" id="hamburgerDropdown">
-            <a href="#products">Products</a>
-            <a href="#contact">Contact Us</a>
-        </div>
+    <div class="inner">
+        <a class="logo">
+            <span class="symbol"><img src="images/fav.png" alt="" /></span>
+            <span class="title">Carbonstop Pte. Ltd.</span>
+        </a>
     </div>
 </header>
 
 <div id="main">
+<div class="inner">
 
-    <!-- Intro Section -->
-    <section id="intro">
-        <h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
-        <p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
-    </section>
+<header>
+<h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
+<p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
+</header>
 
-    <!-- Products Section -->
-    <section id="products" class="product-grid">
-        <article class="style1"><span class="image"><img src="images/labels.png" alt="custom label" /></span><h2>Self Adhesive Label</h2><p>MOQ 50 pcs [Vinyl/Plastic/Holographic]</p></article>
-        <article class="style2"><span class="image"><img src="images/ppbox.png" alt="Paperboard Box" /></span><h2>Paperboard Box</h2><p>MOQ 100 pcs [350gsm Folding Cartons/Tear Strip/Mailer Box]</p></article>
-        <article class="style3"><span class="image"><img src="images/rigid box.png" alt="Rigid Box" /></span><h2>Magnetic & Rigid Box</h2><p>MOQ 100 pcs [2mm chipboard]</p></article>
-        <article class="style4"><span class="image"><img src="images/insert.png" alt="Insert" /></span><h2>Insert / Tray</h2><p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p></article>
-        <article class="style5"><span class="image"><img src="images/bags.png" alt="Bags" /></span><h2>Kraft Paper Bags</h2><p>MOQ 250 pcs [90gsm recycled German kraft paper]</p></article>
-    </section>
+<section class="product-grid">
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="contact-flex">
-            <div class="contact-left"><h2>Contact</h2></div>
-            <div class="contact-center">
-                <p>Email: <a href="mailto:no-reply@carbonstopsg.com">no-reply@carbonstopsg.com</a><br>Use WhatsApp icon for quicker replies!<br>Areas Served: Singapore & West Malaysia</p>
-            </div>
-            <div class="contact-right">
-                <a href="#" id="contactButton" class="button primary">Send Enquiry via Email</a>
-            </div>
-        </div>
-        <ul class="copyright" style="margin-top:15px;">
-            <li>© Carbonstop Pte. Ltd. 3 Coleman Street 049422 Singapore</li>
-        </ul>
-    </section>
+<!-- First Row: 3 images -->
+<article class="style1">
+<span class="image">
+<img src="images/labels.png" alt="custom label, low MOQ for small businesses" />
+</span>
+<h2>Self Adhesive Label</h2> 
+<p>MOQ 50 pcs [Vinyl/Plastic/Holographic]</p>
+</article>
+
+<article class="style2">
+<span class="image">
+<img src="images/ppbox.png" alt="350gsm paperboard box moq from 100 pcs" />
+</span>
+<h2>Paperboard Box</h2>
+<p>MOQ 100 pcs [350gsm Folding Cartons/Tear Strip/Mailer Box]</p>
+</article>
+
+<article class="style3">
+<span class="image">
+<img src="images/rigid box.png" alt="magnetic and lift off lid box" />
+</span>
+<h2>Magnetic & Rigid Box</h2>
+<p>MOQ 100 pcs [2mm chipboard]</p>
+</article>
+
+<!-- Second Row: 2 images -->
+<article class="style4">
+<span class="image">
+<img src="images/insert.png" alt="custom packaging insert" />
+</span>
+<h2>Insert / Tray</h2>
+<p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p>
+</article>
+
+<article class="style5">
+<span class="image">
+<img src="images/bags.png" alt="kraft paper bags custom logo printing singapore" />
+</span>
+<h2>Kraft Paper Bags</h2>
+<p>MOQ 250 pcs [90gsm recycled German kraft paper]</p>
+</article>
+
+</section>
+</div>
+</div>
+
+<footer id="footer">
+<div class="inner">
+
+<!-- Contact section flex layout -->
+<div class="contact-flex">
+
+    <div class="contact-left">
+        <h2>Contact</h2>
+    </div>
+
+    <div class="contact-center">
+        <p>
+            Email: <a href="mailto:no-reply@carbonstopsg.com">no-reply@carbonstopsg.com</a><br>
+            Use WhatsApp icon for quicker replies!<br>
+            Areas Served: Singapore & West Malaysia
+        </p>
+    </div>
+
+    <div class="contact-right">
+        <a href="#" id="contactButton" class="button primary">
+            Send Enquiry via Email
+        </a>
+    </div>
 
 </div>
+
+<ul class="copyright" style="margin-top:15px;">
+<li>© Carbonstop Pte. Ltd. 3 Coleman Street 049422 Singapore</li>
+</ul>
+
+</div>
+</footer>
 
 </div>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/6587808269" target="_blank" class="whatsapp-float"><img src="images/WA.png" alt="Chat on WhatsApp" /></a>
+<a href="https://wa.me/6587808269" target="_blank" class="whatsapp-float">
+    <img src="images/WA.png" alt="Chat on WhatsApp" />
+</a>
+
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
 
 <script>
-    // Hamburger toggle
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const hamburgerDropdown = document.getElementById('hamburgerDropdown');
-    hamburgerBtn.addEventListener('click', () => {
-        hamburgerDropdown.style.display = hamburgerDropdown.style.display==='block'?'none':'block';
-    });
-    window.addEventListener('click', e=>{
-        if(!hamburgerBtn.contains(e.target) && !hamburgerDropdown.contains(e.target)) hamburgerDropdown.style.display='none';
-    });
-
-    // Contact button
     const contactBtn = document.getElementById('contactButton');
-    contactBtn.addEventListener('click', function(e){
+
+    contactBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        const email='no-reply@carbonstopsg.com';
-        const subject=encodeURIComponent('Quotation Request');
-        const body=encodeURIComponent('Hi Carbonstop,\n\nI would like a quotation for:\n(Product type: )\nQuantity: \nSize: \nPrinting: \n\nThank you.');
-        const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        if(isMobile){window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;}
-        else{window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`,'_blank');}
+
+        const email = 'no-reply@carbonstopsg.com';
+        const subject = encodeURIComponent('Quotation Request');
+        const body = encodeURIComponent(
+            'Hi Carbonstop,\n\n' +
+            'I would like a quotation for:\n' +
+            '(Product type: )\n' +
+            'Quantity: \n' +
+            'Size: \n' +
+            'Printing: \n\n' +
+            'Thank you.'
+        );
+
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        } else {
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+            window.open(gmailUrl, '_blank');
+        }
     });
 </script>
 
