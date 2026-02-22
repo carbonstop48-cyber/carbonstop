@@ -173,12 +173,41 @@ Areas Served: Singapore & West Malaysia
 </p>
 
 <!-- Quick Enquiry Button -->
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=no-reply@carbonstopsg.com&su=Quotation%20Request&body=Hi%20Carbonstop,%0D%0A%0D%0AI%20would%20like%20a%20quotation%20for:%0D%0A(Product%20type:%20)%0D%0AQuantity:%20%0D%0ASize:%20%0D%0APrinting:%20%0D%0A%0D%0AThank%20you."
-target="_blank"
-class="button primary"
-style="margin-top:15px;">
-Send Enquiry via Email
+<!-- Quick Enquiry Button -->
+<a href="#" id="contactButton" class="button primary" style="margin-top:15px;">
+    Send Enquiry via Email
 </a>
+
+<script>
+    const contactBtn = document.getElementById('contactButton');
+
+    contactBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const email = 'no-reply@carbonstopsg.com';
+        const subject = encodeURIComponent('Quotation Request');
+        const body = encodeURIComponent(
+            'Hi Carbonstop,\n\n' +
+            'I would like a quotation for:\n' +
+            '(Product type: )\n' +
+            'Quantity: \n' +
+            'Size: \n' +
+            'Printing: \n\n' +
+            'Thank you.'
+        );
+
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // Mobile: use mailto to open email app
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        } else {
+            // Desktop/Laptop: open Gmail compose in new tab
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+            window.open(gmailUrl, '_blank');
+        }
+    });
+</script>
 
 <ul class="copyright">
 <li>© Carbonstop Pte. Ltd.
@@ -201,6 +230,7 @@ Send Enquiry via Email
 
 </body>
 </html>
+
 
 
 
