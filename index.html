@@ -62,6 +62,35 @@
             height: 100%;
             object-fit: contain;
         }
+
+        /* Mini contact form */
+        .mini-contact {
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            max-width:320px;
+        }
+
+        .mini-contact input {
+            padding:10px;
+            border-radius:5px;
+            border:1px solid #ccc;
+            font-size:14px;
+        }
+
+        .mini-contact button {
+            background:#333;
+            color:white;
+            border:none;
+            padding:10px;
+            border-radius:5px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .mini-contact button:hover {
+            background:#000;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -136,9 +165,18 @@
 <footer id="footer">
 <div class="inner">
 <h2>Contact</h2>
-<p>Email: no-reply@carbonstopsg.com<br>
+
+<form action="mailto:no-reply@carbonstopsg.com" method="post" enctype="text/plain" class="mini-contact">
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="tel" name="Phone" placeholder="Phone Number" required>
+    <input type="email" name="Email" placeholder="Email Address" required>
+    <button type="submit">Send Enquiry</button>
+</form>
+
+<p style="margin-top:10px;">
 Use WhatsApp icon for quicker replies!<br>
-Areas Served: Singapore & West Malaysia</p>
+Areas Served: Singapore & West Malaysia
+</p>
 
 <ul class="copyright">
 <li>© Carbonstop Pte. Ltd.
@@ -160,7 +198,6 @@ Areas Served: Singapore & West Malaysia</p>
 
 </body>
 </html>
-
 
 
 
