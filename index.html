@@ -1,139 +1,110 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Carbonstop Packaging</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carbonstop Packaging</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-<style>
-body {
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#ffffff;
-    color:#333;
-}
+    <style>
+        /* Disable image zoom / hover effects */
+        .product-grid article span.image img {
+            transform: none !important;
+            transition: none !important;
+        }
 
-#wrapper {
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
-}
-
-header {
-    text-align:center;
-    margin-bottom:40px;
-}
-
-header img {
-    height:60px;
-    vertical-align:middle;
-}
-
-h1 { margin:20px 0 10px; }
-p { line-height:1.5; }
-
-.product-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap:25px;
-}
-
-.product {
-    border:1px solid #eee;
-    padding:15px;
-    text-align:center;
-}
-
-.product img {
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-footer {
-    margin-top:50px;
-    padding-top:20px;
-    border-top:1px solid #ddd;
-    text-align:center;
-    font-size:14px;
-}
-</style>
+        .product-grid article span.image:hover img {
+            transform: none !important;
+        }
+    </style>
 </head>
-
-<body>
+<body class="is-preload">
 
 <div id="wrapper">
 
+<header id="header">
+    <div class="inner">
+        <a class="logo">
+            <span class="symbol"><img src="images/fav.png" alt="" /></span>
+            <span class="title">Carbonstop Pte. Ltd.</span>
+        </a>
+    </div>
+</header>
+
+<div id="main">
+<div class="inner">
+
 <header>
-    <img src="images/fav.png" alt="">
-    <h1>Carbonstop Pte. Ltd.</h1>
-    <p>Custom Packaging Supplier / MOQ from 50 pcs</p>
-    <p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
+<h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
+<p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
 </header>
 
 <section class="product-grid">
 
-<div class="product">
-<img src="images/labels.png" alt="custom label">
-<h2>Self Adhesive Label</h2>
+<article class="style1">
+<span class="image">
+<img src="images/labels.png" alt="custom label, low MOQ for small businesses" />
+</span>
+<h2>Self Adhesive Label</h2> 
 <p>MOQ 50 pcs [Vinyl/Plastic/Holographic]</p>
-</div>
+</article>
 
-<div class="product">
-<img src="images/pic02.jpg" alt="">
+<article class="style2">
+<span class="image">
+<img src="images/pic02.jpg" alt="" />
+</span>
 <h2>Paperboard Box</h2>
 <p>MOQ 100 pcs [350gsm Folding Cartons/Tear Strip/Mailer Box]</p>
-</div>
+</article>
 
-<div class="product">
-<img src="images/pic03.jpg" alt="">
+<article class="style3">
+<span class="image">
+<img src="images/pic03.jpg" alt="" />
+</span>
 <h2>Magnetic & Rigid Box</h2>
 <p>MOQ 100 pcs [2mm chipboard]</p>
-</div>
+</article>
 
-<div class="product">
-<img src="images/pic04.jpg" alt="">
+<article class="style4">
+<span class="image">
+<img src="images/pic04.jpg" alt="" />
+</span>
 <h2>Insert / Tray</h2>
 <p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p>
-</div>
+</article>
 
-<div class="product">
-<img src="images/pic05.jpg" alt="">
+<article class="style5">
+<span class="image">
+<img src="images/pic05.jpg" alt="" />
+</span>
 <h2>Kraft Paper Bags</h2>
 <p>MOQ 250 pcs [90gsm recycled German kraft paper]</p>
-</div>
+</article>
 
 </section>
+</div>
+</div>
 
-<footer>
+<footer id="footer">
+<div class="inner">
 <h2>Contact</h2>
-<p>
-Email: no-reply@carbonstopsg.com<br>
+<p>Email: no-reply@carbonstopsg.com<br>
 WhatsApp: +65 87808269<br>
-Areas Served: Singapore & West Malaysia
-</p>
+Areas Served: Singapore & West Malaysia</p>
 
-<p>
-© Carbonstop Pte. Ltd.<br>
+<ul class="copyright">
+<li>© Carbonstop Pte. Ltd.
 3 Coleman Street 049422 Singapore
-</p>
+</li>
+</ul>
+</div>
 </footer>
 
 </div>
 
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
