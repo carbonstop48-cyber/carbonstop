@@ -38,47 +38,54 @@
             margin-right: 10px;
         }
 
-        /* Page selection button */
-        .page-select-container {
+        /* Hamburger menu */
+        .hamburger-container {
             position: relative;
-            display: inline-block;
         }
 
-        .page-select-btn {
-            background: #333;
-            color: white;
-            padding: 10px 15px;
-            font-size: 14px;
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 22px;
+            background: transparent;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            padding: 0;
         }
 
-        .page-select-btn:hover {
-            background: #000;
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
-        .page-dropdown {
+        .hamburger-dropdown {
             display: none;
             position: absolute;
             right: 0;
-            background-color: #fff;
-            min-width: 160px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 1;
+            top: 35px;
+            background: #fff;
             border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             overflow: hidden;
+            min-width: 140px;
+            z-index: 10;
         }
 
-        .page-dropdown a {
-            color: #333;
+        .hamburger-dropdown a {
+            display: block;
             padding: 10px 15px;
             text-decoration: none;
-            display: block;
+            color: #333;
         }
 
-        .page-dropdown a:hover {
-            background-color: #f0f0f0;
+        .hamburger-dropdown a:hover {
+            background: #f0f0f0;
         }
 
         /* Main content */
@@ -126,6 +133,13 @@
         }
 
         /* Contact section */
+        #contact {
+            background: #f0f0f0;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
@@ -133,7 +147,6 @@
             justify-content: space-between;
             gap: 10px;
             width: 100%;
-            margin-top: 30px;
         }
 
         .contact-left { flex:1; min-width:120px; }
@@ -141,6 +154,13 @@
         .contact-right { flex:1; min-width:150px; text-align:right; }
 
         @media screen and (max-width: 600px) {
+            #header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            #header .logo {
+                margin-bottom: 10px;
+            }
             .contact-left, .contact-center, .contact-right {
                 flex:100%;
                 text-align:center !important;
@@ -188,24 +208,21 @@
         <span>Carbonstop Pte. Ltd.</span>
     </a>
 
-    <!-- Page selection button -->
-    <div class="page-select-container">
-        <button class="page-select-btn" id="pageSelectBtn">Select Page ▼</button>
-        <div class="page-dropdown" id="pageDropdown">
-            <a href="#home">Home</a>
+    <!-- Hamburger menu -->
+    <div class="hamburger-container">
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="hamburger-dropdown" id="hamburgerDropdown">
             <a href="#products">Products</a>
-            <a href="#contact">Contact</a>
+            <a href="#contact">Contact Us</a>
         </div>
     </div>
 </header>
 
 <div id="main">
-
-    <!-- Home Section -->
-    <section id="home">
-        <h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
-        <p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
-    </section>
 
     <!-- Products Section -->
     <section id="products" class="product-grid">
@@ -268,17 +285,17 @@
 <script src="assets/js/breakpoints.min.js"></script>
 
 <script>
-    // Toggle dropdown
-    const pageBtn = document.getElementById('pageSelectBtn');
-    const pageDropdown = document.getElementById('pageDropdown');
-    pageBtn.addEventListener('click', () => {
-        pageDropdown.style.display = pageDropdown.style.display === 'block' ? 'none' : 'block';
+    // Hamburger toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const hamburgerDropdown = document.getElementById('hamburgerDropdown');
+
+    hamburgerBtn.addEventListener('click', () => {
+        hamburgerDropdown.style.display = hamburgerDropdown.style.display === 'block' ? 'none' : 'block';
     });
 
-    // Close dropdown if clicked outside
     window.addEventListener('click', function(e) {
-        if (!pageBtn.contains(e.target) && !pageDropdown.contains(e.target)) {
-            pageDropdown.style.display = 'none';
+        if(!hamburgerBtn.contains(e.target) && !hamburgerDropdown.contains(e.target)){
+            hamburgerDropdown.style.display = 'none';
         }
     });
 
