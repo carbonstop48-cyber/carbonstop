@@ -8,82 +8,90 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /* Layout */
         body {
-            margin: 0;
+            margin:0;
             font-family: Arial, sans-serif;
         }
 
-        #wrapper {
+        /* Header */
+        #header {
             display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* Side navigation */
-        .side-nav {
-            position: fixed;
-            top: 100px; /* below header */
-            left: 0;
-            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
             background: #f8f8f8;
-            padding: 20px;
-            height: calc(100% - 100px);
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .side-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .side-nav ul li {
-            margin-bottom: 15px;
-        }
-
-        .side-nav ul li a {
+        #header .logo {
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .side-nav ul li a:hover {
             color: #000;
         }
 
-        /* Main content with left margin */
+        #header .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        /* Page selection button */
+        .page-select-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-select-btn {
+            background: #333;
+            color: white;
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .page-select-btn:hover {
+            background: #000;
+        }
+
+        .page-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .page-dropdown a {
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .page-dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Main content */
         #main {
-            flex: 1;
-            margin-left: 220px;
             padding: 20px;
         }
 
-        @media screen and (max-width: 900px) {
-            .side-nav {
-                position: relative;
-                width: 100%;
-                height: auto;
-                top: 0;
-                box-shadow: none;
-                display: flex;
-                justify-content: center;
-            }
-            .side-nav ul li {
-                display: inline-block;
-                margin: 0 15px;
-            }
-            #main {
-                margin-left: 0;
-                padding: 10px;
-            }
-        }
-
-        /* Product grid setup */
+        /* Product grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
+            margin-top: 20px;
         }
 
         @media screen and (max-width: 900px) {
@@ -98,7 +106,6 @@
             }
         }
 
-        /* Product images */
         .product-grid article span.image {
             display: block;
             width: 100%;
@@ -126,33 +133,19 @@
             justify-content: space-between;
             gap: 10px;
             width: 100%;
+            margin-top: 30px;
         }
 
-        .contact-left {
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .contact-center {
-            flex: 2;
-            text-align: center;
-            min-width: 200px;
-        }
-
-        .contact-right {
-            flex: 1;
-            min-width: 150px;
-            text-align: right;
-        }
+        .contact-left { flex:1; min-width:120px; }
+        .contact-center { flex:2; min-width:200px; text-align:center; }
+        .contact-right { flex:1; min-width:150px; text-align:right; }
 
         @media screen and (max-width: 600px) {
             .contact-left, .contact-center, .contact-right {
-                flex: 100%;
-                text-align: center !important;
+                flex:100%;
+                text-align:center !important;
             }
-            .contact-right {
-                margin-top: 10px;
-            }
+            .contact-right { margin-top:10px; }
         }
 
         .button.primary {
@@ -166,9 +159,7 @@
             text-decoration: none;
         }
 
-        .button.primary:hover {
-            background: #000;
-        }
+        .button.primary:hover { background: #000; }
 
         /* Floating WhatsApp button */
         .whatsapp-float {
@@ -192,24 +183,22 @@
 <div id="wrapper">
 
 <header id="header">
-    <div class="inner">
-        <a class="logo">
-            <span class="symbol"><img src="images/fav.png" alt="" /></span>
-            <span class="title">Carbonstop Pte. Ltd.</span>
-        </a>
+    <a class="logo">
+        <img src="images/fav.png" alt="Logo" />
+        <span>Carbonstop Pte. Ltd.</span>
+    </a>
+
+    <!-- Page selection button -->
+    <div class="page-select-container">
+        <button class="page-select-btn" id="pageSelectBtn">Select Page ▼</button>
+        <div class="page-dropdown" id="pageDropdown">
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </div>
     </div>
 </header>
 
-<!-- Side Navigation -->
-<nav class="side-nav">
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- Main content -->
 <div id="main">
 
     <!-- Home Section -->
@@ -220,32 +209,26 @@
 
     <!-- Products Section -->
     <section id="products" class="product-grid">
-        <!-- First Row: 3 images -->
         <article class="style1">
             <span class="image"><img src="images/labels.png" alt="custom label, low MOQ for small businesses" /></span>
-            <h2>Self Adhesive Label</h2> 
+            <h2>Self Adhesive Label</h2>
             <p>MOQ 50 pcs [Vinyl/Plastic/Holographic]</p>
         </article>
-
         <article class="style2">
             <span class="image"><img src="images/ppbox.png" alt="350gsm paperboard box moq from 100 pcs" /></span>
             <h2>Paperboard Box</h2>
             <p>MOQ 100 pcs [350gsm Folding Cartons/Tear Strip/Mailer Box]</p>
         </article>
-
         <article class="style3">
             <span class="image"><img src="images/rigid box.png" alt="magnetic and lift off lid box" /></span>
             <h2>Magnetic & Rigid Box</h2>
             <p>MOQ 100 pcs [2mm chipboard]</p>
         </article>
-
-        <!-- Second Row: 2 images -->
         <article class="style4">
             <span class="image"><img src="images/insert.png" alt="custom packaging insert" /></span>
             <h2>Insert / Tray</h2>
             <p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p>
         </article>
-
         <article class="style5">
             <span class="image"><img src="images/bags.png" alt="kraft paper bags custom logo printing singapore" /></span>
             <h2>Kraft Paper Bags</h2>
@@ -255,28 +238,22 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <footer id="footer">
-            <div class="inner">
-                <div class="contact-flex">
-                    <div class="contact-left">
-                        <h2>Contact</h2>
-                    </div>
-                    <div class="contact-center">
-                        <p>
-                            Email: <a href="mailto:no-reply@carbonstopsg.com">no-reply@carbonstopsg.com</a><br>
-                            Use WhatsApp icon for quicker replies!<br>
-                            Areas Served: Singapore & West Malaysia
-                        </p>
-                    </div>
-                    <div class="contact-right">
-                        <a href="#" id="contactButton" class="button primary">Send Enquiry via Email</a>
-                    </div>
-                </div>
-                <ul class="copyright" style="margin-top:15px;">
-                    <li>© Carbonstop Pte. Ltd. 3 Coleman Street 049422 Singapore</li>
-                </ul>
+        <div class="contact-flex">
+            <div class="contact-left">
+                <h2>Contact</h2>
             </div>
-        </footer>
+            <div class="contact-center">
+                <p>Email: <a href="mailto:no-reply@carbonstopsg.com">no-reply@carbonstopsg.com</a><br>
+                Use WhatsApp icon for quicker replies!<br>
+                Areas Served: Singapore & West Malaysia</p>
+            </div>
+            <div class="contact-right">
+                <a href="#" id="contactButton" class="button primary">Send Enquiry via Email</a>
+            </div>
+        </div>
+        <ul class="copyright" style="margin-top:15px;">
+            <li>© Carbonstop Pte. Ltd. 3 Coleman Street 049422 Singapore</li>
+        </ul>
     </section>
 
 </div>
@@ -291,26 +268,31 @@
 <script src="assets/js/breakpoints.min.js"></script>
 
 <script>
+    // Toggle dropdown
+    const pageBtn = document.getElementById('pageSelectBtn');
+    const pageDropdown = document.getElementById('pageDropdown');
+    pageBtn.addEventListener('click', () => {
+        pageDropdown.style.display = pageDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    window.addEventListener('click', function(e) {
+        if (!pageBtn.contains(e.target) && !pageDropdown.contains(e.target)) {
+            pageDropdown.style.display = 'none';
+        }
+    });
+
     // Contact button behavior
     const contactBtn = document.getElementById('contactButton');
     contactBtn.addEventListener('click', function(e) {
         e.preventDefault();
-
         const email = 'no-reply@carbonstopsg.com';
         const subject = encodeURIComponent('Quotation Request');
         const body = encodeURIComponent(
-            'Hi Carbonstop,\n\n' +
-            'I would like a quotation for:\n' +
-            '(Product type: )\n' +
-            'Quantity: \n' +
-            'Size: \n' +
-            'Printing: \n\n' +
-            'Thank you.'
+            'Hi Carbonstop,\n\nI would like a quotation for:\n(Product type: )\nQuantity: \nSize: \nPrinting: \n\nThank you.'
         );
-
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        if (isMobile) {
+        if(isMobile){
             window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
         } else {
             const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
@@ -321,6 +303,7 @@
 
 </body>
 </html>
+
 
 
 
