@@ -115,6 +115,20 @@
         .button.primary:hover {
             background: #000;
         }
+
+        /* Page selection dropdown */
+        .page-select-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .page-select-container select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -137,6 +151,17 @@
 <h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
 <p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
 </header>
+
+<!-- Page selection dropdown -->
+<div class="page-select-container">
+    <label for="pageSelect"><strong>Go to page:</strong> </label>
+    <select id="pageSelect" onchange="navigatePage()">
+        <option value="">--Select--</option>
+        <option value="index.html">Home</option>
+        <option value="products.html">Products</option>
+        <option value="contact.html">Contact</option>
+    </select>
+</div>
 
 <section class="product-grid">
 
@@ -230,6 +255,7 @@
 <script src="assets/js/breakpoints.min.js"></script>
 
 <script>
+    // Contact button behavior
     const contactBtn = document.getElementById('contactButton');
 
     contactBtn.addEventListener('click', function(e) {
@@ -256,6 +282,15 @@
             window.open(gmailUrl, '_blank');
         }
     });
+
+    // Page selection dropdown
+    function navigatePage() {
+        const select = document.getElementById('pageSelect');
+        const page = select.value;
+        if(page) {
+            window.location.href = page;
+        }
+    }
 </script>
 
 </body>
