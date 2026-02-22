@@ -1,166 +1,128 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Carbonstop Packaging</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<title>Carbonstop Packaging</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#ffffff;
+    color:#333;
+}
+
+#wrapper {
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+header {
+    text-align:center;
+    margin-bottom:40px;
+}
+
+header img {
+    height:60px;
+    vertical-align:middle;
+}
+
+h1 { margin:20px 0 10px; }
+p { line-height:1.5; }
+
+.product-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:25px;
+}
+
+.product {
+    border:1px solid #eee;
+    padding:15px;
+    text-align:center;
+}
+
+.product img {
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+footer {
+    margin-top:50px;
+    padding-top:20px;
+    border-top:1px solid #ddd;
+    text-align:center;
+    font-size:14px;
+}
+</style>
 </head>
-<body class="is-preload">
+
+<body>
 
 <div id="wrapper">
 
-<header id="header">
-    <div class="inner">
-        <a class="logo">
-            <span class="symbol"><img src="images/fav.png" alt="" /></span>
-            <span class="title">Carbonstop Pte. Ltd.</span>
-        </a>
-    </div>
-</header>
-
-<div id="main">
-<div class="inner">
-
 <header>
-<h1>Custom Packaging Supplier / MOQ from 50 pcs</h1>
-<p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
+    <img src="images/fav.png" alt="">
+    <h1>Carbonstop Pte. Ltd.</h1>
+    <p>Custom Packaging Supplier / MOQ from 50 pcs</p>
+    <p>Singapore based one-stop production partner — we create custom product labels, packaging boxes, kraft bags, and packaging inserts.</p>
 </header>
 
 <section class="product-grid">
 
-<article class="style1">
-<span class="image">
-<img src="images/labels.png" alt="custom lablel, low MOQ for small businesses" />
-</span>
-<h2>Self Adhesive Label</h2> 
+<div class="product">
+<img src="images/labels.png" alt="custom label">
+<h2>Self Adhesive Label</h2>
 <p>MOQ 50 pcs [Vinyl/Plastic/Holographic]</p>
-</article>
+</div>
 
-<article class="style2">
-<span class="image">
-<img src="images/pic02.jpg" alt="" />
-</span>
+<div class="product">
+<img src="images/pic02.jpg" alt="">
 <h2>Paperboard Box</h2>
 <p>MOQ 100 pcs [350gsm Folding Cartons/Tear Strip/Mailer Box]</p>
-</article>
+</div>
 
-<article class="style3">
-<span class="image">
-<img src="images/pic03.jpg" alt="" />
-</span>
+<div class="product">
+<img src="images/pic03.jpg" alt="">
 <h2>Magnetic & Rigid Box</h2>
 <p>MOQ 100 pcs [2mm chipboard]</p>
-</article>
+</div>
 
-<article class="style4">
-<span class="image">
-<img src="images/pic04.jpg" alt="" />
-</span>
+<div class="product">
+<img src="images/pic04.jpg" alt="">
 <h2>Insert / Tray</h2>
 <p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p>
-</article>
+</div>
 
-<article class="style5">
-<span class="image">
-<img src="images/pic05.jpg" alt="" />
-</span>
+<div class="product">
+<img src="images/pic05.jpg" alt="">
 <h2>Kraft Paper Bags</h2>
 <p>MOQ 250 pcs [90gsm recycled German kraft paper]</p>
-</article>
+</div>
 
 </section>
-</div>
-</div>
 
-<footer id="footer">
-<div class="inner">
+<footer>
 <h2>Contact</h2>
-<p>Email: no-reply@carbonstopsg.com<br>
+<p>
+Email: no-reply@carbonstopsg.com<br>
 WhatsApp: +65 87808269<br>
-Areas Served: Singapore & West Malaysia</p>
+Areas Served: Singapore & West Malaysia
+</p>
 
-<ul class="copyright">
-<li>© Carbonstop Pte. Ltd.
+<p>
+© Carbonstop Pte. Ltd.<br>
 3 Coleman Street 049422 Singapore
-</li>
-</ul>
-</div>
+</p>
 </footer>
 
 </div>
 
-<script src="assets/js/jquery.min.js"></script>
-
-<script src="assets/js/browser.min.js"></script>
-
-<script src="assets/js/breakpoints.min.js"></script>
-
-<script src="assets/js/util.js"></script>
-
-<script src="assets/js/main.js"></script>
-
 </body>
 </html>
-
-/* ===== Clean product grid ===== */
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-}
-
-/* remove phantom tile behaviour */
-.product-grid article {
-    border: none !important;
-    box-shadow: none !important;
-    overflow: hidden;
-    text-align: center;
-}
-
-/* image container */
-.product-grid article .image {
-    display: block;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-/* fix image sizing */
-.product-grid article .image img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-/* hover zoom */
-.product-grid article:hover .image img {
-    transform: scale(1.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-}
-
-/* text */
-.product-grid h2 {
-    margin-top: 18px;
-    margin-bottom: 8px;
-    font-size: 1.25rem;
-}
-
-.product-grid p {
-    margin: 0;
-    color: #666;
-    font-size: 0.95rem;
-}
-
-
-
-
-
-
 
 
 
