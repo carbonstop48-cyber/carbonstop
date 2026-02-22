@@ -17,7 +17,7 @@
         #header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; /* vertical alignment */
             padding: 10px 20px;
             background: #f8f8f8;
             position: sticky;
@@ -26,13 +26,13 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        /* Logo */
         #header .logo {
             display: flex;
-            align-items: center;
+            align-items: center; /* vertical center */
             text-decoration: none;
             color: #000;
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
         #header .logo img {
@@ -40,18 +40,19 @@
             margin-right: 10px;
         }
 
-        #header .logo span {
+        #header .logo span.logo-text {
             line-height: 1.2;
+            font-size: 1.2rem;
         }
 
-        /* Logo responsive for mobile */
+        /* Mobile logo: 2 lines */
         @media screen and (max-width: 600px) {
-            #header .logo span {
+            #header .logo span.logo-text {
                 display: block;
             }
         }
 
-        /* Hamburger menu */
+        /* Hamburger */
         .hamburger-container {
             position: relative;
         }
@@ -101,7 +102,7 @@
             background: #f0f0f0;
         }
 
-        /* MAIN CONTENT */
+        /* MAIN */
         #main { padding: 20px; }
 
         #intro { text-align: center; margin-bottom: 30px; }
@@ -131,9 +132,7 @@
             transition:none !important;
         }
 
-        .product-grid article span.image:hover img {
-            transform:none !important;
-        }
+        .product-grid article span.image:hover img { transform:none !important; }
 
         /* CONTACT */
         #contact {
@@ -174,7 +173,7 @@
 
         .button.primary:hover { background:#000; }
 
-        /* Floating WhatsApp */
+        /* WhatsApp floating */
         .whatsapp-float {
             position: fixed;
             bottom:20px;
@@ -193,9 +192,10 @@
 <div id="wrapper">
 
 <header id="header">
+    <!-- Logo -->
     <a class="logo">
         <img src="images/fav.png" alt="Logo" />
-        <span>Carbonstop Pte. Ltd.</span>
+        <span class="logo-text">Carbonstop<br>Pte. Ltd.</span>
     </a>
 
     <!-- Hamburger -->
@@ -246,6 +246,7 @@
     </section>
 
 </div>
+
 </div>
 
 <!-- Floating WhatsApp Button -->
@@ -277,6 +278,7 @@
 
 </body>
 </html>
+
 
 
 
