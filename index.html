@@ -12,6 +12,10 @@
         .product-grid article span.image img {
             transform: none !important;
             transition: none !important;
+            width: 100%;       /* fit container width */
+            height: auto;      /* maintain aspect ratio */
+            display: block;    /* remove inline spacing */
+            object-fit: contain; /* scale correctly if container size differs */
         }
 
         .product-grid article span.image:hover img {
