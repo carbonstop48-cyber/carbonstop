@@ -160,11 +160,8 @@
 
         @media screen and (max-width: 600px) {
             #header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            #header .logo {
-                margin-bottom: 10px;
+                flex-direction: row;
+                justify-content: space-between;
             }
             .contact-left, .contact-center, .contact-right {
                 flex:100%;
@@ -210,7 +207,7 @@
 <header id="header">
     <a class="logo">
         <img src="images/fav.png" alt="Logo" />
-        <span>Carbonstop Pte. Ltd.</span>
+        <span>Carbonstop<br>Pte. Ltd.</span>
     </a>
 
     <!-- Hamburger menu -->
@@ -291,9 +288,6 @@
 <a href="https://wa.me/6587808269" target="_blank" class="whatsapp-float">
     <img src="images/WA.png" alt="Chat on WhatsApp" />
 </a>
-
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
 
 <script>
     // Hamburger toggle
