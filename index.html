@@ -124,16 +124,17 @@
             margin-bottom:10px;
             text-align:right;
         }
-        .nav-right select {
-            padding:4px 8px;
-            border-radius:6px;
-            border:1px solid #ccc;
-            font-weight:600;
-            font-size:0.85em;
-            width:auto;
-            max-width:160px;
-            display:inline-block;
-        }
+      .nav-right select {
+    padding: 6px 35px 6px 12px;  /* extra right padding for arrow */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    font-size: 0.85em;
+    min-width: 140px;           /* makes button longer to the left */
+    appearance: none;           /* cleaner look */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
         @media screen and (max-width:600px){
             #header .title{font-size:0.9em;}
         }
@@ -303,6 +304,7 @@
 
 </body>
 </html>
+
 
 
 
