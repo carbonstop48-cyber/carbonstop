@@ -1,276 +1,289 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Contours & Edge</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<title>Contours & Edge</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
 
-    <style>
-        /* Product grid setup */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+  /* ===== Catalog page base ===== */
+  body { background:#ffffff; }
 
-        @media screen and (max-width: 900px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+  .catalog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
 
-        @media screen and (max-width: 600px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+  /* Catalog masthead, mirrors the magazine reference:
+     small eyebrow line, big serif title, short descriptor line */
+  .catalog-header { max-width:1100px; margin:60px auto 10px; padding:0 30px; }
+  .catalog-header .eyebrow {
+    font-family:'Inter', sans-serif;
+    font-size:0.72em;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#9a9a9a;
+    margin:0 0 8px;
+  }
+  .catalog-header h1 {
+    font-family:'EB Garamond', serif;
+    font-weight:600;
+    font-size:2.6em;
+    line-height:1.15;
+    color:#1a1a1a;
+    margin:0 0 10px;
+  }
+  .catalog-header .sub {
+    font-family:'Inter', sans-serif;
+    font-size:0.95em;
+    color:#6b6b6b;
+    margin:0 0 28px;
+  }
+  .catalog-header .rule { border:0; border-top:1px solid #1a1a1a; margin:0 0 0; }
 
-        /* Uniform image frame */
-        .product-grid article span.image {
-            display: block;
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-        }
+  /* ===== Product grid, catalog style ===== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width:1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+    border-left: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
+  }
+  .product-grid article {
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    padding: 34px 28px 40px;
+    box-sizing: border-box;
+  }
 
-        .product-grid article span.image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: none !important;
-        }
+  @media screen and (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media screen and (max-width: 600px) {
+    .product-grid { grid-template-columns: 1fr; }
+  }
 
-        .product-grid article span.image:hover img {
-            transform: none !important;
-        }
+  /* Uniform image frame, no hover zoom — quiet, catalog-plate feel */
+  .product-grid article span.image {
+    display:block;
+    width:100%;
+    height:230px;
+    overflow:hidden;
+    margin-bottom:22px;
+    background:#fafafa;
+  }
+  .product-grid article span.image img {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    transition:none !important;
+  }
+  .product-grid article span.image:hover img { transform:none !important; }
 
-        /* Floating WhatsApp button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            z-index: 1000;
-        }
+  .product-grid article .spec {
+    font-family:'Inter', sans-serif;
+    font-size:0.74em;
+    letter-spacing:0.03em;
+    color:#9a9a9a;
+    margin:0 0 6px;
+  }
+  .product-grid article h2 {
+    font-family:'EB Garamond', serif;
+    font-weight:600;
+    font-size:1.5em;
+    color:#1a1a1a;
+    margin:0 0 6px;
+    line-height:1.2;
+  }
+  .product-grid article .credit {
+    font-family:'Inter', sans-serif;
+    font-size:0.76em;
+    color:#b3b3b3;
+    margin:0 0 14px;
+  }
+  .product-grid article .desc {
+    font-family:'EB Garamond', serif;
+    font-size:0.98em;
+    line-height:1.55;
+    color:#4a4a4a;
+    margin:0;
+  }
 
-        .whatsapp-float img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+  /* Floating WhatsApp button */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+  }
+  .whatsapp-float img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* Contact section styling */
-        .contact-flex {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            width: 100%;
-        }
+  /* Contact section */
+  .contact-flex {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 10px; width: 100%;
+  }
+  .contact-left { flex: 1; min-width: 120px; }
+  .contact-center { flex: 2; text-align: center; min-width: 200px; }
+  .contact-right { flex: 1; min-width: 150px; text-align: right; }
+  @media screen and (max-width: 600px) {
+    .contact-left, .contact-center, .contact-right { flex: 100%; text-align: center !important; }
+    .contact-right { margin-top: 10px; }
+  }
 
-        .contact-left {
-            flex: 1;
-            min-width: 120px;
-        }
+  .button.primary {
+    background: #1a1a1a; color: #fff; border: none;
+    padding:16px 38px; font-size:1em; border-radius: 2px;
+    cursor: pointer; font-family:'Inter', sans-serif; font-weight:600;
+    letter-spacing:0.02em; text-decoration: none;
+  }
+  .button.primary:hover { background: #000; }
 
-        .contact-center {
-            flex: 2;
-            text-align: center;
-            min-width: 200px;
-        }
+  @media screen and (max-width:600px){ #header .title{font-size:0.9em;} }
 
-        .contact-right {
-            flex: 1;
-            min-width: 150px;
-            text-align: right;
-        }
+  #contact { background:#f7f7f5; padding-top:30px; padding-bottom:30px; }
 
-        @media screen and (max-width: 600px) {
-            .contact-left, .contact-center, .contact-right {
-                flex: 100%;
-                text-align: center !important;
-            }
-            .contact-right {
-                margin-top: 10px;
-            }
-        }
+  #about { max-width:1100px; margin:70px auto 0; padding:0 30px 40px; }
+  #about h2 {
+    font-family:'EB Garamond', serif; font-size:1.6em; color:#1a1a1a; margin-bottom:14px;
+  }
+  #about p {
+    font-family:'Inter', sans-serif; font-size:0.95em; line-height:1.7; color:#5a5a5a;
+  }
 
-        /* Button styling */
-        .button.primary {
-            background: #333;
-            color: white;
-            border: none;
-            padding:18px 40px;font-size:1.1em;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .button.primary:hover {
-            background: #000;
-        }
-    
-}
-        @media screen and (max-width:600px){
-            #header .title{font-size:0.9em;}
-        }
-            /* Restore grey contact background */
-        #contact{background:#f2f2f2;padding-top:20px;padding-bottom:20px;}
-    </style>
+</style>
 </head>
 <body class="is-preload">
-
 <div id="wrapper">
 
-<header id="header">
+  <header id="header">
     <div class="inner">
-
-        <a href="index.html" style="border:0;text-decoration:none;">
-            <img src="images/LOGO 2026.png"
-                 alt="Company Logo"
-                 style="height:70px;width:auto;max-width:320px;display:block;">
-        </a>
-
+      <a href="index.html" style="border:0;text-decoration:none;">
+        <img src="images/LOGO 2026.png" alt="Company Logo" style="height:70px;width:auto;max-width:320px;display:block;">
+      </a>
     </div>
-</header>
+  </header>
 
-<header>
-<h1>B2B Custom Business/Event Packaging [CATALOG]</h1>
-<p></p>
-</header>
+  <div class="catalog-header">
+    <p class="eyebrow">Product Catalog — Vol. 01</p>
+    <h1>Custom Business &amp; Event Packaging</h1>
+    <p class="sub">A working reference of our current packaging lines, specs, and minimum order quantities.</p>
+    <hr class="rule">
+  </div>
 
-<section id="products" class="product-grid">
+  <section id="products" class="product-grid">
 
-<!-- First Row: 3 images -->
-<article class="style1">
-<span class="image">
-<img src="images/label2.png" alt="custom label, low MOQ for small businesses" />
-</span>
-<h2>Custom Box</h2> 
-<p>MOQ 200 pcs ◇ 350gsm</p>
-</article>
+    <article class="style1">
+      <span class="image"><img src="images/label2.png" alt="custom label, low MOQ for small businesses" /></span>
+      <p class="spec">MOQ 200 PCS · 350GSM</p>
+      <h2>Custom Box</h2>
+      <p class="credit">Folding Carton / Full-Colour Print</p>
+      <p class="desc">A straightforward carton for retail and gifting, built on 350gsm board. Low minimum order makes it practical for small businesses testing a new line or running a seasonal batch.</p>
+    </article>
 
-<article class="style2">
-<span class="image">
-<img src="images/ppbox.png" alt="350gsm paperboard box moq from 100 pcs" />
-</span>
-<h2>Magnetic Box</h2>
-<p>MOQ Flexible ◇ 1000gsm</p>
-</article>
+    <article class="style2">
+      <span class="image"><img src="images/ppbox.png" alt="350gsm paperboard box moq from 100 pcs" /></span>
+      <p class="spec">MOQ FLEXIBLE · 1000GSM</p>
+      <h2>Magnetic Box</h2>
+      <p class="credit">Rigid Board / Magnetic Closure</p>
+      <p class="desc">A heavier 1000gsm construction with a magnetic lid for a firmer, more considered unboxing moment. Flexible minimums suit both one-off events and repeat production runs.</p>
+    </article>
 
-<article class="style3">
-<span class="image">
-<img src="images/rigid box.png" alt="magnetic and lift off lid box" />
-</span>
-<h2>Magnetic & Rigid Box</h2>
-<p>MOQ 100 pcs [2mm chipboard]</p>
-</article>
+    <article class="style3">
+      <span class="image"><img src="images/rigid box.png" alt="magnetic and lift off lid box" /></span>
+      <p class="spec">MOQ 100 PCS · 2MM CHIPBOARD</p>
+      <h2>Magnetic &amp; Rigid Box</h2>
+      <p class="credit">2mm Chipboard / Lift-off or Magnetic Lid</p>
+      <p class="desc">Our sturdiest option, wrapped over 2mm chipboard for a premium hand-feel. Available with either a magnetic closure or a classic lift-off lid, depending on the presentation you need.</p>
+    </article>
 
-<!-- Second Row: 3 images -->
-<article class="style4">
-<span class="image">
-<img src="images/insert.png" alt="custom packaging insert" />
-</span>
-<h2>Insert / Tray</h2>
-<p>MOQ 100 pcs [260gsm paperboard + laser cutting]</p>
-</article>
+    <article class="style4">
+      <span class="image"><img src="images/insert.png" alt="custom packaging insert" /></span>
+      <p class="spec">MOQ 100 PCS · 260GSM + LASER CUT</p>
+      <h2>Insert / Tray</h2>
+      <p class="credit">260gsm Paperboard / Laser-Cut</p>
+      <p class="desc">Laser-cut inserts shaped to hold a product securely in transit and on shelf. Made to measure, so items sit exactly where they should, without shifting inside the box.</p>
+    </article>
 
-<article class="style5">
-<span class="image">
-<img src="images/bags.png" alt="kraft paper bags custom logo printing singapore" />
-</span>
-<h2>Kraft Paper Bags</h2>
-<p>MOQ 250 pcs [90gsm recycled German kraft paper]</p>
-</article>
+    <article class="style5">
+      <span class="image"><img src="images/bags.png" alt="kraft paper bags custom logo printing singapore" /></span>
+      <p class="spec">MOQ 250 PCS · 90GSM RECYCLED KRAFT</p>
+      <h2>Kraft Paper Bags</h2>
+      <p class="credit">90gsm Recycled German Kraft</p>
+      <p class="desc">Durable recycled kraft paper carry bags with your logo printed to order. A practical, lower-impact option for retail, F&amp;B takeaway, and event handouts.</p>
+    </article>
 
-<article class="style6">
-<span class="image"><img src="images/redpacket.png" alt="red packet"/></span>
-<h2>Red Packets</h2><p>MOQ 100 pcs [Foil / Emboss]</p></article>
-</section>
+    <article class="style6">
+      <span class="image"><img src="images/redpacket.png" alt="red packet" /></span>
+      <p class="spec">MOQ 100 PCS · FOIL / EMBOSS</p>
+      <h2>Red Packets</h2>
+      <p class="credit">Foil Stamping / Embossing</p>
+      <p class="desc">Custom red packets finished with foil stamping or embossing for a corporate festive gift that still feels personal. Popular for Lunar New Year client and staff gifting.</p>
+    </article>
 
-    <!-- Thin line between Products and About Us -->
-<div style="width:80%; margin:40px auto; border-top:1px solid #ccc;"></div>
+  </section>
 
-<!-- ABOUT US SECTION -->
-<section id="about" style="margin-top:60px;">
-<h2>About Us</h2>
-<p>Contours & Edge supports businesses across retail, F&B, events, hotels, beauty & wellness, e-commerce, healthcare and government sectors with practical, well-designed packaging solutions. Instead of juggling multiple overseas vendors, our clients work with a single local partner who can plan, prototype, and produce an entire packaging system from start to finish. This means accurate measurements, reliable fit, and protection tailored to real operational use — reducing costly guesswork, shipping damage, and the back-and-forth that often comes with remote sourcing.</p>
-</section>
+  <div style="width:80%; margin:40px auto; border-top:1px solid #e2e2e2;"></div>
 
-</div>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Contours & Edge supports businesses across retail, F&B, events, hotels, beauty & wellness, e-commerce, healthcare and government sectors with practical, well-designed packaging solutions. Instead of juggling multiple overseas vendors, our clients work with a single local partner who can plan, prototype, and produce an entire packaging system from start to finish. This means accurate measurements, reliable fit, and protection tailored to real operational use — reducing costly guesswork, shipping damage, and the back-and-forth that often comes with remote sourcing.</p>
+  </section>
+
 </div>
 
 <footer id="contact">
-<div class="inner">
-
-<!-- Contact section flex layout -->
-<div class="contact-flex">
-
-    <div class="contact-left">
+  <div class="inner">
+    <div class="contact-flex">
+      <div class="contact-left">
         <h2>Contact Us</h2>
+      </div>
+      <div class="contact-center">
+        <p>Use WhatsApp icon for quicker replies!<br></p>
+      </div>
+      <div class="contact-right">
+        <a href="#" id="contactButton" class="button primary">Send Enquiry via Email</a>
+      </div>
     </div>
-
-    <div class="contact-center">
-        <p>
-            Use WhatsApp icon for quicker replies!<br>
-        </p>
-    </div>
-
-    <div class="contact-right">
-        <a href="#" id="contactButton" class="button primary">
-            Send Enquiry via Email
-        </a>
-    </div>
-
-</div>
-
-</div>
+  </div>
 </footer>
 
 </div>
 
-<!-- Floating WhatsApp Button -->
 <a href="https://wa.me/6587808269" target="_blank" class="whatsapp-float">
-    <img src="images/WA.png" alt="Chat on WhatsApp" />
+  <img src="images/WA.png" alt="Chat on WhatsApp" />
 </a>
 
 <script src="assets/js/browser.min.js"></script>
 <script src="assets/js/breakpoints.min.js"></script>
-
 <script>
-    const contactBtn = document.getElementById('contactButton');
-
-    contactBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const email = 'no-reply@carbonstopsg.com';
-        const subject = encodeURIComponent('Quotation Request');
-        const body = encodeURIComponent(
-            'Hi Carbonstop,\n\n' +
-            'I would like a quotation for:\n' +
-            '(Product type: )\n' +
-            'Quantity: \n' +
-            'Size: \n' +
-            'Printing: \n\n' +
-            'Thank you.'
-        );
-
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        if (isMobile) {
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-        } else {
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
-            window.open(gmailUrl, '_blank');
-        }
-    });
+  const contactBtn = document.getElementById('contactButton');
+  contactBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const email = 'no-reply@carbonstopsg.com';
+    const subject = encodeURIComponent('Quotation Request');
+    const body = encodeURIComponent(
+      'Hi Carbonstop,\n\n' +
+      'I would like a quotation for:\n' +
+      '(Product type: )\n' +
+      'Quantity: \n' +
+      'Size: \n' +
+      'Printing: \n\n' +
+      'Thank you.'
+    );
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    } else {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      window.open(gmailUrl, '_blank');
+    }
+  });
 </script>
-
 </body>
 </html>
