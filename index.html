@@ -14,6 +14,28 @@
 
   .catalog-wrap { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
 
+  /* ===== Header / logo fix =====
+     Forces the logo to keep its natural proportions no matter what
+     main.css declares for #header img elsewhere. */
+  #header .inner {
+    display: flex !important;
+    align-items: center;
+  }
+  #header .inner a.logo-link {
+    display: inline-flex !important;
+    align-items: center;
+    border: 0;
+    text-decoration: none;
+    line-height: 0; /* removes inline-image baseline gap */
+  }
+  #header .inner a.logo-link img {
+    height: 70px !important;
+    width: auto !important;
+    max-width: 320px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
   /* Catalog masthead, mirrors the magazine reference:
      small eyebrow line, big serif title, short descriptor line */
   .catalog-header { max-width:1100px; margin:60px auto 10px; padding:0 30px; }
@@ -41,19 +63,24 @@
   }
   .catalog-header .rule { border:0; border-top:1px solid #1a1a1a; margin:0 0 0; }
 
-  /* ===== Product grid, catalog style ===== */
+  /* ===== Product grid, catalog style =====
+     Lines are drawn with a background color showing through a 1px gap,
+     instead of individually-set borders. This can't desync across
+     breakpoints or get overridden by the template's .style1-.style6
+     rules, because no article ever declares its own border. */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
     max-width:1100px;
     margin: 0 auto;
     padding: 0 30px;
-    border-left: 1px solid #e2e2e2;
-    border-top: 1px solid #e2e2e2;
+    background: #e2e2e2;
   }
   .product-grid article {
-    border-right: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;
+    background: #ffffff !important;
+    border: 0 !important;
+    margin: 0 !important;
     padding: 34px 28px 40px;
     box-sizing: border-box;
   }
@@ -128,17 +155,27 @@
   }
   .whatsapp-float img { width: 100%; height: 100%; object-fit: contain; }
 
-  /* Contact section */
+  /* ===== Contact section, rebalanced =====
+     Equal-width, centered, gapped instead of spread edge-to-edge. */
   .contact-flex {
-    display: flex; flex-wrap: wrap; align-items: center;
-    justify-content: space-between; gap: 10px; width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
   }
-  .contact-left { flex: 1; min-width: 120px; }
-  .contact-center { flex: 2; text-align: center; min-width: 200px; }
-  .contact-right { flex: 1; min-width: 150px; text-align: right; }
+  .contact-left,
+  .contact-center,
+  .contact-right {
+    flex: 0 1 auto;
+  }
+  .contact-center { text-align: center; }
   @media screen and (max-width: 600px) {
-    .contact-left, .contact-center, .contact-right { flex: 100%; text-align: center !important; }
-    .contact-right { margin-top: 10px; }
+    .contact-flex { flex-direction: column; gap: 16px; }
+    .contact-left, .contact-center, .contact-right { text-align: center !important; }
   }
 
   .button.primary {
@@ -168,8 +205,8 @@
 
   <header id="header">
     <div class="inner">
-      <a href="index.html" style="border:0;text-decoration:none;">
-        <img src="images/LOGO 2026.png" alt="Company Logo" style="height:70px;width:auto;max-width:320px;display:block;">
+      <a href="index.html" class="logo-link">
+        <img src="images/LOGO 2026.png" alt="Company Logo">
       </a>
     </div>
   </header>
